@@ -6,6 +6,6 @@ Implementation of the model used in [Protest Activity Detection and Perceived Vi
 [Requirements](#requirements-software)
 [Usage](#usage)
 
-### Requirements
+### Requirements   
 
 ### Usage
