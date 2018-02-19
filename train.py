@@ -34,7 +34,7 @@ from sklearn.metrics import accuracy_score, mean_squared_error
 protest_idx = Variable(torch.LongTensor([0]))
 violence_idx = Variable(torch.LongTensor([1]))
 visattr_idx = Variable(torch.LongTensor(list(range(2,12))))
-best_loss = 0
+best_loss = float("inf")
 
 
 class ProtestDataset(Dataset):
