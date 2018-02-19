@@ -13,7 +13,7 @@ Implementation of the model used in the paper [Protest Activity Detection and Pe
 [scikit-learn](http://scikit-learn.org/)   
 
 ### UCLA Protest Image Dataset   
-![alt text](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/1-d.png)
+![alt text](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/1-d.png)
 You will need to download our UCLA Protest Image Dataset to train the model. Please e-mail me if you want to download our dataset! (You can find my e-mail address in the paper.)
 
 #### Dataset Statistics
