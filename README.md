@@ -1,6 +1,5 @@
 # Protest Activity Detection and Perceived Violence Estimation from Social Media Images
-
-Implementation of the model used in the paper [Protest Activity Detection and Perceived Violence Estimation from Social Media Images](https://arxiv.org/abs/1709.06204) by Donghyeon Won, Zachary C. Steinert-Threlkeld, Jungseock Joo.
+Implementation of the model used in the paper [**_Protest Activity Detection and Perceived Violence Estimation from Social Media Images_**](https://arxiv.org/abs/1709.06204) by Donghyeon Won, Zachary C. Steinert-Threlkeld, Jungseock Joo.
 
 ### Contents
 [Requirements](#requirements)   
@@ -42,7 +41,7 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 |Fields  |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |--------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
 |Accuracy|0 |0 |0  |0  |0     |0     |0   |0    |0  |0  |0  |
-|ROC AUC |0  |0 |0|0|0   |0   |0   |0    |0|0|0| 
+|ROC AUC |0  |0 |0|0|0   |0   |0   |0    |0|0|0|
 
 
 ### Usage   
