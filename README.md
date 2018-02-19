@@ -18,7 +18,7 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 #### Dataset Statistics   
 \# of images: 40,764   
 \# of protest images: 11,659   
-##### Binary Variables (Protest \& Visual Attributes)
+##### Protest \& Visual Attributes
 
 |Fields       |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |-------------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
@@ -34,7 +34,7 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 
 ### Model
 #### Architecture   
-We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the our trained model from this [Dropbox link](https://www.dropbox.com/s/hak8bp8zw8q6zfg/protest-model.pth.tar?dl=0).  
+We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the model I trained from this [Dropbox link](https://www.dropbox.com/s/hak8bp8zw8q6zfg/protest-model.pth.tar?dl=0).  
 ##### Performance
 *To be updated*
 
