@@ -19,15 +19,18 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 #### Dataset Statistics   
 \# of images: 40,764   
 \# of protest images: 11,659   
+##### Binary Variables (Protest \& Visual Attributes)
 
 |Fields       |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |-------------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
 |\# of Images |11,659 |9,669 |428  |667  |792     |347     |8,510   |2,939    |970  |987  |548  |
 |Positive Rate|0.286  |0.829 |0.037|0.057|0.068   |0.030   |0.730   |0.252    |0.083|0.085|0.047|
+##### Violence   
+![alt text](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/violence_hist.png)
 
 ### Model
 #### Architecture   
-We fine-tuned ImageNet pretrained (ResNet50)[https://arxiv.org/abs/1512.03385] to our data. You can download the our trained model from (here)[https://www.dropbox.com/s/hak8bp8zw8q6zfg/protest-model.pth.tar?dl=0].  
+We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the our trained model from this [Dropbox link](https://www.dropbox.com/s/hak8bp8zw8q6zfg/protest-model.pth.tar?dl=0).  
 ##### Performance
 
 ### Usage   
