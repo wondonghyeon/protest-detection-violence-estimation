@@ -18,7 +18,7 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 #### Dataset Statistics   
 \# of images: 40,764   
 \# of protest images: 11,659   
-##### Protest \& Visual Attributes
+##### Protest \& Visual Attributes   
 
 |Fields       |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |-------------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
