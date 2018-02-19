@@ -14,9 +14,15 @@ Implementation of the model used in the paper [Protest Activity Detection and Pe
 
 ### UCLA Protest Image Dataset   
 ![alt text](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/1-d.png)
-You will need to download our UCLA Protest Image Dataset to train the model. Please e-mail me if you want to download our dataset! (You can find my e-mail address in the paper.)
+You will need to download our UCLA Protest Image Dataset to train the model. Please e-mail me if you want to download our dataset!
 
-#### Dataset Statistics
+#### Dataset Statistics   
+\# of images: 40,764   
+\# of protest images: 11,659   
+|Fields       |Protest|Sign |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
+|\# of Images |11,659 |9669 |428  |667  |792     |347     |8,510   |2939     |970  |987  |548  |
+|Positive Rate|0.286  |0.829|0.037|0.057|0.068   |0.030   |0.730   |0.252    |0.083|0.085|0.047|
+
 
 
 ### Model
