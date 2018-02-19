@@ -37,15 +37,12 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 #### Architecture   
 We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the our trained model from this [Dropbox link](https://www.dropbox.com/s/hak8bp8zw8q6zfg/protest-model.pth.tar?dl=0).  
 ##### Performance
-##### Binary Variables (Protest \& Visual Attributes)
 *To be updated*
 
 |Fields  |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |--------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
 |Accuracy|0 |0 |0  |0  |0     |0     |0   |0    |0  |0  |0  |
-|ROC AUC |0  |0 |0|0|0   |0   |0   |0    |0|0|0|
-
-##### Violence   
+|ROC AUC |0  |0 |0|0|0   |0   |0   |0    |0|0|0| 
 
 
 ### Usage   
