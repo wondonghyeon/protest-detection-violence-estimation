@@ -1,6 +1,8 @@
 # Protest Activity Detection and Perceived Violence Estimation from Social Media Images
 Implementation of the model used in the paper **_Protest Activity Detection and Perceived Violence Estimation from Social Media Images_** [\[arxiv\]](https://arxiv.org/abs/1709.06204) by [Donghyeon Won](dhwon.com), [Zachary C. Steinert-Threlkeld](https://zacharyst.com/), [Jungseock Joo](http://home.jsjoo.com/).
 
+![](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/overview.png)
+
 ### Contents
 [Requirements](#requirements)   
 [Usage](#usage)
