@@ -47,5 +47,14 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 
 
 ### Usage   
-#### Training   
+#### Training  
+
+```bash
+python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.01 --print_freq 100 --epochs 100 --cuda
+```
+
 #### Evaluation
+
+```bash
+python pred.py --img_dir some/image/directory/ --output_csvpath result.csv --model protest-model.pth.tar --cuda
+```
