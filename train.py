@@ -12,61 +12,24 @@ import pandas as pd
 import time
 import shutil
 from PIL import Image
+from sklearn.metrics import accuracy_score, mean_squared_error
 
 import torch
 import torch.nn as nn
-import torch.nn.parallel
-import torch.backends.cudnn as cudnn
-import torch.distributed as dist
 import torch.optim
-import torch.utils.data.distributed
 from torch.utils.data import Dataset, DataLoader
 from torch.autograd import Variable
 import torchvision.transforms as transforms
-import torchvision.datasets as datasets
 import torchvision.models as models
 
-from sklearn.metrics import accuracy_score, mean_squared_error
+from util import ProtestDataset, modified_resnet50
 
 
 # for indexing output of the model
-
 protest_idx = Variable(torch.LongTensor([0]))
 violence_idx = Variable(torch.LongTensor([1]))
 visattr_idx = Variable(torch.LongTensor(list(range(2,12))))
 best_loss = float("inf")
-
-
-class ProtestDataset(Dataset):
-    """
-    Protest dataset.
-    """
-    def __init__(self, txt_file, img_dir, transform = None):
-        """
-        Args:
-            txt_file: Path to txt file with annotation
-            img_dir: Directory with images
-            transform: Optional transform to be applied on a sample.
-        """
-        self.label_frame = pd.read_csv(txt_file, delimiter="\t").replace('-', 0)
-        self.img_dir = img_dir
-        self.transform = transform
-    def __len__(self):
-        return len(self.label_frame)
-    def __getitem__(self, idx):
-        imgpath = os.path.join(self.img_dir,
-                                self.label_frame.iloc[idx, 0])
-        image = pil_loader(imgpath)
-        # we need this variable to check if the image is protest or not
-        protest = self.label_frame.iloc[idx, 1:2].as_matrix().astype('float')
-        violence = self.label_frame.iloc[idx, 2:3].as_matrix().astype('float')
-        visattr = self.label_frame.iloc[idx, 3:].as_matrix().astype('float')
-        label = {'protest':protest, 'violence':violence, 'visattr':visattr}
-        # label = self.label_frame.iloc[idx, 1:].as_matrix().astype('float')
-        sample = {"image":image, "label":label}
-        if self.transform:
-            sample["image"] = self.transform(sample["image"])
-        return sample
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
@@ -85,15 +48,8 @@ class AverageMeter(object):
         self.count += n
         self.avg = self.sum / self.count
 
-def pil_loader(path):
-    # open path as file to avoid ResourceWarning (https://github.com/python-pillow/Pillow/issues/835)
-    with open(path, 'rb') as f:
-        img = Image.open(f)
-        return img.convert('RGB')
 
-
-
-def calculate_loss(output, target, criterions, weights = [2,20,1]):
+def calculate_loss(output, target, criterions, weights = [2,40,1]):
     """calculate loss"""
     # output = output.float()
     N_protest = int(target['protest'].data.sum())
@@ -134,6 +90,8 @@ def calculate_loss(output, target, criterions, weights = [2,20,1]):
 
 
     losses = [weights[i] * criterions[i](outputs[i], targets[i]) for i in range(3)]
+    # losses[1] = losses[1] / float(N_protest) * args.batch_size
+    # losses[2] = losses[2] / float(N_protest) * args.batch_size
     # loss += weights[0] * criterions[0](output_protest, target_protest)
     # loss += weights[1] * criterions[1](output_violence, target_violence)
     # loss += weights[2] * criterions[2](output_visattr, target_visattr)
@@ -143,6 +101,7 @@ def calculate_loss(output, target, criterions, weights = [2,20,1]):
 
 
 def train(train_loader, model, criterions, optimizer, epoch):
+    """training the model"""
     # train mode
     model.train()
 
@@ -203,6 +162,7 @@ def train(train_loader, model, criterions, optimizer, epoch):
                    visattr_acc = visattr_acc))
 
 def validate(val_loader, model, criterions, epoch):
+    """training the model"""
     batch_time = AverageMeter()
     data_time = AverageMeter()
     loss_history = AverageMeter()
@@ -264,16 +224,6 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     if is_best:
         shutil.copyfile(filename, 'model_best.pth.tar')
 
-class FinalLayer(nn.Module):
-    def __init__(self):
-        super(FinalLayer, self).__init__()
-        self.fc = nn.Linear(2048, 12)
-        self.sigmoid = nn.Sigmoid()
-
-    def forward(self, x):
-        out = self.fc(x)
-        out = self.sigmoid(out)
-        return out
 
 def main():
     global best_loss
@@ -283,10 +233,8 @@ def main():
     txt_file_train = os.path.join(data_dir, "annot_train.txt")
     txt_file_val = os.path.join(data_dir, "annot_test.txt")
 
-    # load pretrained resnet50 and modify last fully connected layer
-    model = models.resnet50(pretrained = True)
-    model.fc = FinalLayer()
-    # model.fc = nn.Linear(2048, 12)
+    # load pretrained resnet50 with a modified last fully connected layer
+    model = modified_resnet50()
 
     # we need three different criterion for training
     criterion_protest = nn.BCELoss()
