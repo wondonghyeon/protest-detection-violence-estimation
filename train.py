@@ -35,7 +35,7 @@ best_loss = float("inf")
 
 def calculate_loss(output, target, criterions, weights = [1, 10, 5]):
     """Calculate loss"""
-
+    # number of protest images
     N_protest = int(target['protest'].data.sum())
     batch_size = len(target['protest'])
 
@@ -54,34 +54,39 @@ def calculate_loss(output, target, criterions, weights = [1, 10, 5]):
         scores['visattr_acc'] = 0
         return losses, scores, N_protest
 
-    # used for filling values for non-protest images
+    # used for filling 0 for non-protest images
     not_protest_mask = (1 - target['protest']).byte()
 
     outputs = [None] * 4
-    outputs[0] = output.index_select(1, protest_idx)  # protest output
-    outputs[1] = output.index_select(1, violence_idx) # violence output
+    # protest output
+    outputs[0] = output.index_select(1, protest_idx)
+    # violence output
+    outputs[1] = output.index_select(1, violence_idx)
     outputs[1].masked_fill_(not_protest_mask, 0)
-
-    outputs[2] = output.index_select(1, visattr_idx)  # visual attribute output
+    # visual attribute output
+    outputs[2] = output.index_select(1, visattr_idx)
     outputs[2].masked_fill_(not_protest_mask.repeat(1, 10),0)
 
 
     targets = [None] * 4
 
-    targets[0] = target['protest'].float()  # protest target
-    targets[1] = target['violence'].float() # violence target
-    targets[2] = target['visattr'].float()  # visual attribute target
+    targets[0] = target['protest'].float()
+    targets[1] = target['violence'].float()
+    targets[2] = target['visattr'].float()
 
     scores = {}
+    # protest accuracy for this batch
     scores['protest_acc'] = accuracy_score(outputs[0].data.round(), targets[0].data)
+    # violence MSE for this batch
     scores['violence_mse'] = ((outputs[1].data - targets[1].data).pow(2)).sum() / float(N_protest)
+    # mean accuracy for visual attribute for this batch
     comparison = (outputs[2].data.round() == targets[2].data)
     comparison.masked_fill_(not_protest_mask.repeat(1, 10).data,0)
     n_right = comparison.float().sum()
     mean_acc = n_right / float(N_protest*10)
-    scores['visattr_acc'] = mean_acc #mean accuracy
+    scores['visattr_acc'] = mean_acc
 
-
+    # return weighted loss
     losses = [weights[i] * criterions[i](outputs[i], targets[i]) for i in range(len(criterions))]
 
     return losses, scores, N_protest
@@ -90,7 +95,7 @@ def calculate_loss(output, target, criterions, weights = [1, 10, 5]):
 
 def train(train_loader, model, criterions, optimizer, epoch):
     """training the model"""
-    # train mode
+
     model.train()
 
     batch_time = AverageMeter()
@@ -118,21 +123,22 @@ def train(train_loader, model, criterions, optimizer, epoch):
 
         input_var = Variable(input)
         output = model(input_var)
-        # output.register_hook(print)
+
         losses, scores, N_protest = calculate_loss(output, target_var, criterions)
 
         optimizer.zero_grad()
         loss = 0
         for l in losses:
             loss += l
+        # back prop
         loss.backward()
-        # print(losses[0].data[0], losses[1].data[0], losses[2].data[0])
         optimizer.step()
 
         if N_protest:
             loss_protest.update(losses[0].data[0], input.size(0))
             loss_v.update(loss.data[0] - losses[0].data[0], N_protest)
         else:
+            # when there is no protest image in the batch
             loss_protest.update(losses[0].data[0], input.size(0))
         loss_history.append(loss.data[0])
         protest_acc.update(scores['protest_acc'], input.size(0))
@@ -161,7 +167,8 @@ def train(train_loader, model, criterions, optimizer, epoch):
     return loss_history
 
 def validate(val_loader, model, criterions, epoch):
-    """training the model"""
+    """Validating"""
+    model.eval()
     batch_time = AverageMeter()
     data_time = AverageMeter()
     loss_protest = AverageMeter()
@@ -197,6 +204,7 @@ def validate(val_loader, model, criterions, epoch):
             loss_protest.update(losses[0].data[0], input.size(0))
             loss_v.update(loss.data[0] - losses[0].data[0], N_protest)
         else:
+            # when no protest images
             loss_protest.update(losses[0].data[0], input.size(0))
         loss_history.append(loss.data[0])
         protest_acc.update(scores['protest_acc'], input.size(0))
@@ -229,12 +237,13 @@ def validate(val_loader, model, criterions, epoch):
     return loss_protest.avg + loss_v.avg, loss_history
 
 def adjust_learning_rate(optimizer, epoch):
-    """Sets the learning rate to the initial LR decayed by 10 every 10 epochs"""
+    """Sets the learning rate to the initial LR decayed by 0.5 every 5 epochs"""
     lr = args.lr * (0.5 ** (epoch // 5))
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
 def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+    """Save checkpoints"""
     torch.save(state, filename)
     if is_best:
         shutil.copyfile(filename, 'model_best.pth.tar')

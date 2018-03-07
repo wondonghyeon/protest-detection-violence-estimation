@@ -24,6 +24,7 @@ def eval_one_dir(img_dir, model):
         """
         return model output of all the images in a directory
         """
+        model.eval()
         # make dataloader
         dataset = ProtestDatasetEval(img_dir = img_dir)
         data_loader = DataLoader(dataset,
