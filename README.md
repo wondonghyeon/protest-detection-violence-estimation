@@ -3,10 +3,6 @@ Implementation of the model used in the paper **_Protest Activity Detection and 
 
 ![](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/overview.png)
 
-### Contents
-[Requirements](#requirements)   
-[Usage](#usage)
-
 ### Requirements   
 [Pytorch](http://pytorch.org/)   
 [NumPy](http://www.numpy.org/)   
