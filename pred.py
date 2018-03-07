@@ -33,8 +33,9 @@ def eval_one_dir(img_dir, model):
 
         outputs = []
         imgpaths = []
-        # need to change tqdm thing.. (consider the last iter)
-        with tqdm(total=len(os.listdir(img_dir))) as pbar:
+
+        n_imgs = len(os.listdir(img_dir))
+        with tqdm(total=n_imgs) as pbar:
             for i, sample in enumerate(data_loader):
                 imgpath, input = sample['imgpath'], sample['image']
                 if args.cuda:
@@ -44,7 +45,10 @@ def eval_one_dir(img_dir, model):
                 output = model(input_var)
                 outputs.append(output.cpu().data.numpy())
                 imgpaths += imgpath
-                pbar.update(args.batch_size)
+                if i < n_imgs / args.batch_size:
+                    pbar.update(args.batch_size)
+                else:
+                    pbar.update(n_imgs%args.batch_size)
 
 
         df = pd.DataFrame(np.zeros((len(os.listdir(img_dir)), 13)))
@@ -59,13 +63,13 @@ def eval_one_dir(img_dir, model):
 def main():
 
     # load trained model
-    print("*** loading the model from {model}***".format(model = args.model))
+    print("*** loading model from {model}".format(model = args.model))
     model = modified_resnet50()
     if args.cuda:
         model = model.cuda()
     with open(args.model) as f:
         model.load_state_dict(torch.load(f)['state_dict'])
-    print("*** calculating the model outputs of the images in {img_dir}***"
+    print("*** calculating the model output of the images in {img_dir}"
             .format(img_dir = args.img_dir))
 
     # calculate output

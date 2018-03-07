@@ -12,6 +12,7 @@ import torch.nn as nn
 import torchvision.transforms as transforms
 import torchvision.models as models
 
+
 class ProtestDataset(Dataset):
     """
     dataset for training and evaluation
@@ -32,12 +33,12 @@ class ProtestDataset(Dataset):
         imgpath = os.path.join(self.img_dir,
                                 self.label_frame.iloc[idx, 0])
         image = pil_loader(imgpath)
-        # we need this variable to check if the image is protest or not
+
         protest = self.label_frame.iloc[idx, 1:2].as_matrix().astype('float')
         violence = self.label_frame.iloc[idx, 2:3].as_matrix().astype('float')
         visattr = self.label_frame.iloc[idx, 3:].as_matrix().astype('float')
         label = {'protest':protest, 'violence':violence, 'visattr':visattr}
-        # label = self.label_frame.iloc[idx, 1:].as_matrix().astype('float')
+
         sample = {"image":image, "label":label}
         if self.transform:
             sample["image"] = self.transform(sample["image"])
@@ -95,4 +96,55 @@ def modified_resnet50():
     # load pretrained resnet50 with a modified last fully connected layer
     model = models.resnet50(pretrained = True)
     model.fc = FinalLayer()
+
+    # uncomment following lines if you wnat to freeze early layers
+    # i = 0
+    # for child in model.children():
+    #     i += 1
+    #     if i < 4:
+    #         for param in child.parameters():
+    #             param.requires_grad = False
+
+
     return model
+
+class AverageMeter(object):
+    """Computes and stores the average and current value"""
+    def __init__(self):
+        self.reset()
+
+    def reset(self):
+        self.val = 0
+        self.avg = 0
+        self.sum = 0
+        self.count = 0
+
+    def update(self, val, n=1):
+        self.val = val
+        self.sum += val * n
+        self.count += n
+        if self.count != 0:
+            self.avg = self.sum / self.count
+
+class Lighting(object):
+    """
+    Lighting noise(AlexNet - style PCA - based noise)
+    https://github.com/zhanghang1989/PyTorch-Encoding/blob/master/experiments/recognition/dataset/minc.py
+    """
+    
+    def __init__(self, alphastd, eigval, eigvec):
+        self.alphastd = alphastd
+        self.eigval = eigval
+        self.eigvec = eigvec
+
+    def __call__(self, img):
+        if self.alphastd == 0:
+            return img
+
+        alpha = img.new().resize_(3).normal_(0, self.alphastd)
+        rgb = self.eigvec.type_as(img).clone()\
+            .mul(alpha.view(1, 3).expand(3, 3))\
+            .mul(self.eigval.view(1, 3).expand(3, 3))\
+            .sum(1).squeeze()
+
+        return img.add(rgb.view(3, 1, 1).expand_as(img))
