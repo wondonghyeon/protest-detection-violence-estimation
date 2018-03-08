@@ -34,7 +34,6 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 #### Architecture   
 We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the model I trained from this [Dropbox link](https://www.dropbox.com/s/usolc4qls6wkni4/model_best.pth.tar?dl=0).  
 ##### Performance
-###### Binary Attributes
 
 <!-- |Fields  |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |--------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
@@ -60,15 +59,15 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 [protest-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [sign-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/sign.png
 [photo-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/photo.png
-[fire-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[police-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[children-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[group_20-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[group_100-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[flag-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[night-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[shout-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[violence-scatter]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[fire-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/fire.png
+[police-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/police.png
+[children-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/children.png
+[group_20-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/group_20.png
+[group_100-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/group_100.png
+[flag-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/flag.png
+[night-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/night.png
+[shout-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/shout.png
+[violence-scatter]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/violence.png
 
 
 
