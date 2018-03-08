@@ -9,6 +9,19 @@ Implementation of the model used in the paper **_Protest Activity Detection and 
 [pandas](https://pandas.pydata.org/)   
 [scikit-learn](http://scikit-learn.org/)   
 
+### Usage   
+#### Training  
+
+```bash
+python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.002 --print_freq 100 --epochs 100 --cuda
+```
+
+#### Evaluation
+
+```bash
+python pred.py --img_dir path/to/some/image/directory/ --output_csvpath result.csv --model model_best.pth.tar --cuda
+```
+
 ### UCLA Protest Image Dataset   
 ![](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/1-d.png)
 You will need to download our UCLA Protest Image Dataset to train the model. Please e-mail me if you want to download our dataset!
@@ -29,21 +42,6 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 |0.365|0.352  |0.144|
 
 ![](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/violence_hist.png)
-
-### Usage   
-#### Training  
-
-```bash
-python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.002 --print_freq 100 --epochs 100 --cuda
-```
-
-#### Evaluation
-
-```bash
-python pred.py --img_dir path/to/some/image/directory/ --output_csvpath result.csv --model model_best.pth.tar --cuda
-```
-
-
 
 ### Model
 #### Architecture   
