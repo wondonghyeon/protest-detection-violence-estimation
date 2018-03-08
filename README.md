@@ -41,12 +41,35 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 |Accuracy|0.919  |0.890 |0.967|0.980|0.953   |0.970   |0.793   |0.803    |0.921|0.939|0.952|
 |ROC AUC |0.970  |0.922 |0.811|0.985|0.939   |0.827   |0.818   |0.839    |0.828|0.940|0.849| -->
 
-|Fields  |Protest|Sign  |Photo|
-|--------|-------|------|-----|
-|ROC Curve|![][protest-roc]|![][protest-roc] |![][protest-roc]|
+|Protest|Sign  |Photo|
+|-------|------|-----|
+|![][protest-roc]|![][sign-roc]|![][photo-roc]|
 
+|Fire|Law Enf.|Children|
+|-------|------|-----|
+|![][protest-roc]|![][protest-roc]|![][protest-roc]|
+
+|Group>20|Group>100|Flag|
+|-------|------|-----|
+|![][protest-roc]|![][protest-roc]|![][protest-roc]|
+
+|Night|Shout|Violence|
+|-------|------|-----|
+|![][protest-roc]|![][protest-roc]|![][protest-roc]|
 
 [protest-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[sign-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/sign.png
+[photo-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/photo.png
+[fire-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[police-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[childern-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[group_20-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[group_100-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[flag-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[night-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[shout-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[violence-scatter]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+
 
 ###### Violence
 ![](https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/violence.png)
