@@ -43,7 +43,7 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 
 ![][protest-roc]
 
-[protest-roc]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[protest-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 
 ###### Violence
 ![](https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/violence.png)
