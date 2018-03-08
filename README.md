@@ -45,7 +45,7 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 
 ### Model
 #### Architecture   
-We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the model I trained from this [Dropbox link](https://www.dropbox.com/s/usolc4qls6wkni4/model_best.pth.tar?dl=0).  
+We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the model I trained from this [Dropbox link](https://www.dropbox.com/s/rxslj6x01otf62i/model_best.pth.tar?dl=0).
 
 
 
