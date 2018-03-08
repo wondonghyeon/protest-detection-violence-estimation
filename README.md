@@ -18,7 +18,7 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 \# of protest images: 11,659   
 ##### Protest \& Visual Attributes   
 
-|Fields       |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
+|Fields       |Protest|Sign  |Photo|Fire |Police|Children|Group>20|Group>100|Flag |Night|Shouting|
 |-------------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
 |\# of Images |11,659 |9,669 |428  |667  |792     |347     |8,510   |2,939    |970  |987  |548  |
 |Positive Rate|0.286  |0.829 |0.037|0.057|0.068   |0.030   |0.730   |0.252    |0.083|0.085|0.047|
@@ -44,7 +44,7 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 |-------|------|-----|
 |![][protest-roc]|![][sign-roc]|![][photo-roc]|
 
-|Fire|Law Enf.|Children|
+|Fire|Police|Children|
 |-------|------|-----|
 |![][fire-roc]|![][police-roc]|![][children-roc]|
 
@@ -52,9 +52,9 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 |-------|------|-----|
 |![][group_20-roc]|![][group_100-roc]|![][flag-roc]|
 
-|Night|Shout|Violence|
+|Night|Shouting|Violence|
 |-------|------|-----|
-|![][night-roc]|![][shout-roc]|![][violence-scatter]|
+|![][night-roc]|![][shouting-roc]|![][violence-scatter]|
 
 [protest-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [sign-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/sign.png
@@ -66,7 +66,7 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 [group_100-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/group_100.png
 [flag-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/flag.png
 [night-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/night.png
-[shout-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/shout.png
+[shouting-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/shouting.png
 [violence-scatter]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/violence.png
 
 
