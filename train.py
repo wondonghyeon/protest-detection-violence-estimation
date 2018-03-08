@@ -238,7 +238,7 @@ def validate(val_loader, model, criterions, epoch):
 
 def adjust_learning_rate(optimizer, epoch):
     """Sets the learning rate to the initial LR decayed by 0.5 every 5 epochs"""
-    lr = args.lr * (0.5 ** (epoch // 5))
+    lr = args.lr * (0.4 ** (epoch // 4))
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 
