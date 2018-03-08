@@ -41,10 +41,13 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 |Accuracy|0.919  |0.890 |0.967|0.980|0.953   |0.970   |0.793   |0.803    |0.921|0.939|0.952|
 |ROC AUC |0.970  |0.922 |0.811|0.985|0.939   |0.827   |0.818   |0.839    |0.828|0.940|0.849| -->
 
-|Fields  |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
-|--------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
-|ROC Curve|![][protest-roc]  |0.890 |0.967|0.980|0.953   |0.970   |0.793   |0.803    |0.921|0.939|0.952|
+|Fields  |Protest|Sign  |Photo|Fire |Law Enf.|Children|
+|--------|-------|------|-----|-----|--------|--------|
+|ROC Curve|![][protest-roc]|![][protest-roc] |![][protest-roc]|![][protest-roc]|
 
+|Fields  |Group>20  |Group>100|Flag |Night|Shout|
+|--------|-------|------|-----|-----|--------|
+|ROC Curve|![][protest-roc] |![][protest-roc] |![][protest-roc]|![][protest-roc]|
 
 
 
