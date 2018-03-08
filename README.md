@@ -30,10 +30,28 @@ You will need to download our UCLA Protest Image Dataset to train the model. Ple
 
 ![](https://raw.githubusercontent.com/wondonghyeon/protest-detection-violence-estimation/master/files/violence_hist.png)
 
+### Usage   
+#### Training  
+
+```bash
+python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.002 --print_freq 100 --epochs 100 --cuda
+```
+
+#### Evaluation
+
+```bash
+python pred.py --img_dir path/to/some/image/directory/ --output_csvpath result.csv --model model_best.pth.tar --cuda
+```
+
+
+
 ### Model
 #### Architecture   
 We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) to our data. You can download the model I trained from this [Dropbox link](https://www.dropbox.com/s/usolc4qls6wkni4/model_best.pth.tar?dl=0).  
-##### Performance
+
+
+
+#### Performance
 
 <!-- |Fields  |Protest|Sign  |Photo|Fire |Law Enf.|Children|Group>20|Group>100|Flag |Night|Shout|
 |--------|-------|------|-----|-----|--------|--------|--------|---------|-----|-----|-----|
@@ -68,18 +86,3 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 [night-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/night.png
 [shouting-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/shouting.png
 [violence-scatter]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/violence.png
-
-
-
-### Usage   
-#### Training  
-
-```bash
-python train.py --data_dir UCLA-protest/ --batch_size 32 --lr 0.002 --print_freq 100 --epochs 100 --cuda
-```
-
-#### Evaluation
-
-```bash
-python pred.py --img_dir path/to/some/image/directory/ --output_csvpath result.csv --model model_best.pth.tar --cuda
-```
