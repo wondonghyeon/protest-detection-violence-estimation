@@ -47,22 +47,22 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 
 |Fire|Law Enf.|Children|
 |-------|------|-----|
-|![][protest-roc]|![][protest-roc]|![][protest-roc]|
+|![][fire-roc]|![][police-roc]|![][children-roc]|
 
 |Group>20|Group>100|Flag|
 |-------|------|-----|
-|![][protest-roc]|![][protest-roc]|![][protest-roc]|
+|![][group_20-roc]|![][group_100-roc]|![][flag-roc]|
 
 |Night|Shout|Violence|
 |-------|------|-----|
-|![][protest-roc]|![][protest-roc]|![][protest-roc]|
+|![][night-roc]|![][shout-roc]|![][violence-scatter]|
 
 [protest-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [sign-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/sign.png
 [photo-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/photo.png
 [fire-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [police-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
-[childern-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
+[children-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [group_20-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [group_100-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 [flag-roc]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
@@ -71,8 +71,6 @@ We fine-tuned ImageNet pretrained [ResNet50](https://arxiv.org/abs/1512.03385) t
 [violence-scatter]: https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/protest.png
 
 
-###### Violence
-![](https://github.com/wondonghyeon/protest-detection-violence-estimation/blob/master/files/violence.png)
 
 ### Usage   
 #### Training  
