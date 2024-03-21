@@ -1,3 +1,5 @@
+Disclaimer: This repo is not actively maintained and I do not plan to maintain it. If you need the dataset, please email me. Thank you for your understanding. 
+
 # Protest Activity Detection and Perceived Violence Estimation from Social Media Images
 Implementation of the model used in the paper **_Protest Activity Detection and Perceived Violence Estimation from Social Media Images_** (ACM Multimedia 2017) [\[arxiv\]](https://arxiv.org/abs/1709.06204) by [Donghyeon Won](dhwon.com), [Zachary C. Steinert-Threlkeld](https://zacharyst.com/), [Jungseock Joo](http://home.jsjoo.com/).
 
